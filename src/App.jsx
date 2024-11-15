@@ -5,7 +5,7 @@ import { Container } from "@/container";
 
 function App() {
   return (
-    <div className="w-full h-auto px-4">
+    <div className="w-full h-auto">
       <Navbar />
       <Container>
         <Home />
