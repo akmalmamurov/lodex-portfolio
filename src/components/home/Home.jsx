@@ -13,18 +13,18 @@ export const Home = () => {
     reset();
   };
   return (
-    <section id="home" className="py-[90px]">
-      <div className="grid grid-cols-1 gap-10 lgl:gap-20 lg:grid-cols-2">
+    <section id="home" className="pt-[100px]">
+      <div className="grid grid-cols-1 gap-10 lg:gap-20 lg:grid-cols-2">
         <div className="w-full pr-0 lg:pr-[90px]">
-          <h1 className="font-semibold text-[54px] leading-[81px] mb-6">
+          <h1 className="font-semibold text-[44px] lg:text-[54px] lg:leading-[81px] mb-6">
             Develop Your Life With{" "}
             <span className="text-[#18CA90]">One Step.</span>
           </h1>
-          <p className="font-normal text-linkColor text-[21px] leading-[33px] mb-[30px]">
+          <p className="font-normal text-linkColor text-[18px] lg:text-[21px] leading-[33px] mb-[30px] lg:w-auto w-[70%]">
             Pushing the possibilities of the internet. Good for the last
             software. Make it A software night.
           </p>
-          <form onSubmit={handleSubmit(onSubmit)} className="mb-[36px]">
+          <form onSubmit={handleSubmit(onSubmit)} className=" lg:w-auto w-2/3 lg:m-auto mx-auto">
             {errors.email && (
               <p className="text-sm text-dangerColor">{errors.email.message}</p>
             )}
@@ -49,13 +49,13 @@ export const Home = () => {
               </button>
             </div>
           </form>
-          <div className="flex items-center gap-[30px]">
+          <div className="mt-[36px] flex items-center gap-[30px] lg:justify-start justify-center">
             <img src={googlePlay} alt="googlePlay" />
             <img src={appleStore} alt="appleStore" />
           </div>
         </div>
         <div className="">
-          <img src={homeImg} alt="" />
+          <img src={homeImg} alt="homeImg"  className="object-contain"/>
         </div>
       </div>
     </section>

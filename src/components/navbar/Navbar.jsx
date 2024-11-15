@@ -35,7 +35,7 @@ export const Navbar = () => {
   };
 
   return (
-    <nav className="sticky top-0 z-10 py-2 bg-white/90">
+    <nav className="sticky top-0 z-10 py-2 bg-white/95">
       <Container>
         <div className="flex items-center justify-between">
           {/* Logo */}
@@ -50,7 +50,7 @@ export const Navbar = () => {
               {navLinks.map(({ id, title, link }) => (
                 <li
                   key={id}
-                  className="cursor-pointer text-linkColor font-normal text-[18px] tracking-wide hover:text-linkColor/75"
+                  className="cursor-pointer text-linkColor font-normal text-[18px] tracking-wide hover:text-titleSpan"
                 >
                   <Link
                     activeClass="active"
@@ -67,7 +67,7 @@ export const Navbar = () => {
             </ul>
             <span
               onClick={() => setShowMenu(!showMenu)}
-              className="flex items-center justify-center w-10 h-10 text-xl text-white rounded-full lgl:hidden bg-dangerColor"
+              className="flex items-center justify-center w-10 h-10 text-xl text-linkColor rounded-full lgl:hidden "
             >
               <FiMenu />
             </span>
