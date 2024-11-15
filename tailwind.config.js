@@ -16,6 +16,7 @@ export default {
       colors: {
         linkColor: "#021206",
         dangerColor: "#F44545",
+        titleSpan: "#6778D6",
       },
     },
   },
