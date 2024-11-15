@@ -6,9 +6,11 @@
 body {
   font-family: "Poppins", sans-serif;
 }
+
 .active {
-  color: #6778D6;
+  color: #6778d6;
 }
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
