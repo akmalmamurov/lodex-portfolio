@@ -9,3 +9,6 @@ body {
 .active {
   color: rgb(2 18 6 / 0.45);
 }
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
