@@ -76,13 +76,13 @@ const Services = () => {
           />
         </div>
         {/* column 5 */}
-        <div className="flex justify-center ">
-          <div className="w-[582px] relative">
+        <div className="flex justify-start mdl:justify-center ">
+          <div className="w-full mdl:w-[582px] relative">
             <Card
               title={"Internet magazine"}
               description={`Mahsulotlaringizni onlayn sotmoqchimisiz? Unda sizga Onlayn Internet Magazin xizmatimizni taklif qilamiz.`}
             />
-            <div className="absolute -left-[100px] -top-[128px] w-[139px] h-[139px] -z-10 ">
+            <div className="absolute -left-[60px] -top-[100px]  mdl:-left-[100px] mdl:-top-[128px] w-[139px] h-[139px] -z-10 ">
               <ElipseIcon />
             </div>
           </div>

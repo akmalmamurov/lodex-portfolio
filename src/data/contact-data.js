@@ -8,7 +8,7 @@ export const contactData = {
     name: "F.I.SH (Familiya, Ism, Ochestva)",
   },
   phone_number: {
-    type: "number",
+    type: "text",
     name: "Telefon raqamingiz:",
   },
   project: {
