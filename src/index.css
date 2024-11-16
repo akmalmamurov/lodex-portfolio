@@ -14,3 +14,47 @@ body {
   display: none;
 }
 
+.btn {
+  background: linear-gradient(
+    91.76deg,
+    #6a8cd3 0.13%,
+    #6258db 45.51%,
+    #5f35e0 99.87%
+  );
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  @apply bg-transparent;
+  @apply transition-[background-color] duration-[5000s] delay-0 ease-in-out;
+}
+input[type="checkbox"] {
+  appearance: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: border 0.2s, background-color 0.2s;
+}
+
+input[type="checkbox"]:checked {
+  border: none;
+  background-image: url("./assets/images/checkedElipse.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+input[type="checkbox"]:checked::before {
+  content: url("./assets/images/checked.png"); 
+  position: absolute;
+  top: 5px;
+  left: 8px;
+  z-index: 10; 
+}

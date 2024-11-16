@@ -5,6 +5,7 @@ import homeImg from "./home.png";
 import aboutTopImg from "./about1.png";
 import aboutMidImg from "./about2.png";
 import aboutBottomImg from "./about3.png";
+import check from "./checked.png";
 
 export {
   logo,
@@ -14,4 +15,4 @@ export {
   aboutTopImg,
   aboutMidImg,
   aboutBottomImg,
-};
+  check,};
