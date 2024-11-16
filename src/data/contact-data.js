@@ -11,10 +11,10 @@ export const contactData = {
     type: "text",
     name: "Telefon raqamingiz:",
   },
-  project: {
-    type: "text",
-    name: "Loyiha tavsifi",
-  },
+//   project: {
+//     type: "area",
+//     name: "Loyiha tavsifi",
+//   },
   project_type: {
     type: "checkbox",
     name: "Loyiha turi:",

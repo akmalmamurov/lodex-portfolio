@@ -34,7 +34,7 @@ input:-webkit-autofill:focus {
   @apply bg-transparent;
   @apply transition-[background-color] duration-[5000s] delay-0 ease-in-out;
 }
-input[type="checkbox"] {
+input[type="radio"] {
   appearance: none;
   width: 36px;
   height: 36px;
@@ -43,7 +43,7 @@ input[type="checkbox"] {
   transition: border 0.2s, background-color 0.2s;
 }
 
-input[type="checkbox"]:checked {
+input[type="radio"]:checked {
   border: none;
   background-image: url("./assets/images/checkedElipse.png");
   background-size: cover;
@@ -51,7 +51,7 @@ input[type="checkbox"]:checked {
   background-repeat: no-repeat;
 }
 
-input[type="checkbox"]:checked::before {
+input[type="radio"]:checked::before {
   content: url("./assets/images/checked.png"); 
   position: absolute;
   top: 5px;

@@ -102,9 +102,26 @@ export const Contact = () => {
                   )
                 ) : null
               )}
+              <div className="flex flex-col">
+                <label htmlFor={"message"} className="mb-2 font-medium">
+                  Loyiha tavsifi
+                </label>
+                <textarea
+                  name=""
+                  id="message"
+                  className="border-[0.2px] border-black/30 rounded-[8px] p-2"
+                  {...register("message", {
+                    required: "This field is required",
+                  })}
+                ></textarea>
+                {errors.message && (
+                  <span className="text-red-500 text-sm">
+                    {errors.message.message}
+                  </span>
+                )}
+              </div>
             </div>
 
-            {/* Right Checkbox Fields */}
             <div className="flex flex-col gap-4">
               <label className="font-medium mb-2">
                 {contactData.project_type.name}
@@ -112,13 +129,13 @@ export const Contact = () => {
               {contactData.project_type.options.map((option, index) => (
                 <div className="flex items-center gap-4" key={index}>
                   <input
-                    type="checkbox"
+                    type="radio"
                     id={`project_type_${index}`}
                     value={option}
                     {...register("project_type", {
-                      required: false,
+                      required: "Loyiha turini tanlash majburiy",
                     })}
-                    className="appearance-none w-[36px] h-[36px] bg-white rounded-full border border-[#5F77C2]/70 cursor-pointer transition duration-200 relative"
+                    className=" w-[36px] h-[36px] bg-white rounded-full border border-[#5F77C2]/70 cursor-pointer transition duration-200  relative"
                   />
                   <label
                     htmlFor={`project_type_${index}`}
@@ -128,6 +145,11 @@ export const Contact = () => {
                   </label>
                 </div>
               ))}
+              {errors.project_type && (
+                <span className="text-red-500 text-sm">
+                  {errors.project_type.message}
+                </span>
+              )}
             </div>
           </div>
           <div className="flex justify-center mt-[72px]">
