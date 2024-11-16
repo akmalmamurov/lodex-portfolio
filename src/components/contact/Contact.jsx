@@ -8,10 +8,25 @@ export const Contact = () => {
     reset,
     formState: { errors },
   } = useForm();
+
   const onSubmit = (data) => {
     console.log(data);
     reset();
   };
+
+  const phoneChange = (e) => {
+    let value = e.target.value.replace(/[^\d]/g, "");
+    if (value.startsWith("998")) value = "+" + value;
+    else value = "+998" + value;
+    if (value.length > 4) value = value.slice(0, 4) + " " + value.slice(4);
+    if (value.length > 7) value = value.slice(0, 7) + " " + value.slice(7);
+    if (value.length > 11) value = value.slice(0, 11) + " " + value.slice(11);
+    if (value.length > 14) value = value.slice(0, 14) + " " + value.slice(14);
+    if (value.length > 17) value = value.slice(0, 17);
+
+    e.target.value = value;
+  };
+
   return (
     <section id="contact" className="py-[90px]">
       <div className="px-0 lgl:px-[150px]">
@@ -19,7 +34,7 @@ export const Contact = () => {
           <h2 className="font-bold text-linkColor text-center text-[32px] lgl:text-[50px] uppercase mb-[44px]">
             Biz bilan bog’laning
           </h2>
-          <div className="">
+          <div>
             <h4 className="font-bold text-[32px] text-center lgl:text-[50px] text-linkColor leading-[75px] lgl:text-left">
               Contact:
             </h4>
@@ -30,32 +45,66 @@ export const Contact = () => {
           </div>
         </div>
         <form onSubmit={handleSubmit(onSubmit)}>
-          {/* Chap tomondagi inputlar */}
-          <div className="flex  justify-between lgl:gap-0 gap-20">
-            <div className="flex flex-col  mdl:w-[446px] gap-4 lgl:mb-0 mb-10">
+          <div className="flex justify-between lgl:gap-0 gap-20">
+            {/* Left Input Fields */}
+            <div className="flex flex-col mdl:w-[446px] gap-4 lgl:mb-0 mb-10">
               {Object.entries(contactData).map(([key, item]) =>
                 item.type !== "checkbox" ? (
-                  <div className="flex flex-col" key={key}>
-                    <label htmlFor={key} className="mb-2 font-medium">
-                      {item.name}
-                    </label>
-                    <input
-                      type={item.type}
-                      className="border-[0.2px] border-black/30 rounded-[8px] p-2"
-                      id={key}
-                      {...register(key, {
-                        required: "This field is required",
-                      })}
-                    />
-                    {errors[key] && (
-                      <span className="text-red-500 text-sm">
-                        {errors[key].message}
-                      </span>
-                    )}
-                  </div>
+                  key === "phone_number" ? (
+                    <div className="flex flex-col" key={key}>
+                      <label htmlFor={key} className="mb-2 font-medium">
+                        {item.name}
+                      </label>
+                      <input
+                        type="text"
+                        maxLength={17}
+                        className="border-[0.2px] border-black/30 rounded-[8px] p-2"
+                        id={key}
+                        placeholder="+998"
+                        {...register(key, {
+                          required: "Telefon raqam majburiy maydon",
+                          minLength: {
+                            value: 17,
+                            message: "Noto'g'ri telefon raqam",
+                          },
+                          maxLength: {
+                            value: 17,
+                            message: "Noto'g'ri telefon raqam",
+                          },
+                          onChange: (e) => phoneChange(e),
+                        })}
+                      />
+                      {errors[key] && (
+                        <span className="text-red-500 text-sm">
+                          {errors[key].message}
+                        </span>
+                      )}
+                    </div>
+                  ) : (
+                    <div className="flex flex-col" key={key}>
+                      <label htmlFor={key} className="mb-2 font-medium">
+                        {item.name}
+                      </label>
+                      <input
+                        type={item.type}
+                        className="border-[0.2px] border-black/30 rounded-[8px] p-2"
+                        id={key}
+                        {...register(key, {
+                          required: "This field is required",
+                        })}
+                      />
+                      {errors[key] && (
+                        <span className="text-red-500 text-sm">
+                          {errors[key].message}
+                        </span>
+                      )}
+                    </div>
+                  )
                 ) : null
               )}
             </div>
+
+            {/* Right Checkbox Fields */}
             <div className="flex flex-col gap-4">
               <label className="font-medium mb-2">
                 {contactData.project_type.name}
