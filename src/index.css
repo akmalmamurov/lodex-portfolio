@@ -22,7 +22,10 @@ body {
     #5f35e0 99.87%
   );
 }
+footer{
+  background: linear-gradient(91.82deg, #70AFCD -29.62%, #6364DA 36.48%, #5F34E1 100%);
 
+}
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;

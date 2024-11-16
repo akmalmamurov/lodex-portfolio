@@ -1,7 +1,12 @@
 import { contactData } from "@/data";
+import axios from "axios";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+import Loading from "../loading/Loading";
 
 export const Contact = () => {
+  const [loading, setLoading] = useState(false);
   const {
     register,
     handleSubmit,
@@ -9,9 +14,22 @@ export const Contact = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
-    reset();
+  const onSubmit = async (data) => {
+    const parsedData = {
+      ...data,
+      phone: data.phone.replace(/\s+/g, ""),
+    };
+
+    try {
+      setLoading(true);
+      await axios.post("https://lx.saidnet.uz/api/order/create", parsedData);
+      toast.success("Tez orada siz bilan bog'lanamiz");
+      reset();
+    } catch (error) {
+      toast.error("Xatolik yuz berdi");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const phoneChange = (e) => {
@@ -45,12 +63,12 @@ export const Contact = () => {
           </div>
         </div>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="flex justify-between lgl:gap-0 gap-20">
+          <div className="flex-col md:flex justify-between lgl:gap-0 md:gap-10">
             {/* Left Input Fields */}
-            <div className="flex flex-col mdl:w-[446px] gap-4 lgl:mb-0 mb-10">
+            <div className="flex flex-col mdl:w-[446px] gap-4 ">
               {Object.entries(contactData).map(([key, item]) =>
                 item.type !== "checkbox" ? (
-                  key === "phone_number" ? (
+                  key === "phone" ? (
                     <div className="flex flex-col" key={key}>
                       <label htmlFor={key} className="mb-2 font-medium">
                         {item.name}
@@ -103,58 +121,56 @@ export const Contact = () => {
                 ) : null
               )}
               <div className="flex flex-col">
-                <label htmlFor={"message"} className="mb-2 font-medium">
+                <label htmlFor={"description"} className="mb-2 font-medium">
                   Loyiha tavsifi
                 </label>
                 <textarea
                   name=""
-                  id="message"
+                  id="description"
                   className="border-[0.2px] border-black/30 rounded-[8px] p-2"
-                  {...register("message", {
+                  {...register("description", {
                     required: "This field is required",
                   })}
                 ></textarea>
-                {errors.message && (
+                {errors.description && (
                   <span className="text-red-500 text-sm">
-                    {errors.message.message}
+                    {errors.description.message}
                   </span>
                 )}
               </div>
             </div>
 
-            <div className="flex flex-col gap-4">
-              <label className="font-medium mb-2">
+            <div>
+              <label className="font-normal text-base text-linkColor mb-2 mdl:hidden block">
                 {contactData.project_type.name}
               </label>
-              {contactData.project_type.options.map((option, index) => (
-                <div className="flex items-center gap-4" key={index}>
-                  <input
-                    type="radio"
-                    id={`project_type_${index}`}
-                    value={option}
-                    {...register("project_type", {
-                      required: "Loyiha turini tanlash majburiy",
-                    })}
-                    className=" w-[36px] h-[36px] bg-white rounded-full border border-[#5F77C2]/70 cursor-pointer transition duration-200  relative"
-                  />
-                  <label
-                    htmlFor={`project_type_${index}`}
-                    className="text-base lgl:text-lg font-medium cursor-pointer"
-                  >
-                    {option}
-                  </label>
-                </div>
-              ))}
-              {errors.project_type && (
-                <span className="text-red-500 text-sm">
-                  {errors.project_type.message}
-                </span>
-              )}
+              <div className="flex mdl:flex-col flex-wrap gap-2 mdl:gap-4">
+                <label className="font-normal text-base text-linkColor mb-2 mdl:block hidden">
+                  {contactData.project_type.name}
+                </label>
+                {contactData.project_type.options.map((option, index) => (
+                  <div className="flex items-center gap-2 mdl:gap-4" key={index}>
+                    <input
+                      type="radio"
+                      id={`project_type_${index}`}
+                      value={option}
+                      // {...register("project_type")}
+                      className="w-[36px] h-[36px] bg-white rounded-full border border-[#5F77C2]/70 cursor-pointer transition duration-200 relative"
+                    />
+                    <label
+                      htmlFor={`project_type_${index}`}
+                      className="text-base lgl:text-lg font-medium cursor-pointer"
+                    >
+                      {option}
+                    </label>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
           <div className="flex justify-center mt-[72px]">
             <button className="btn w-1/2 lgl:w-[500px] rounded-[21px] font-semibold py-[3px]  lgl:pt-1 lgl:pb-[5px] lgl:font-bold text-white text-xl lgl:text-[30px] leading-[54px]">
-              Yuborish
+              {loading ? <Loading /> : "Yuborish"}
             </button>
           </div>
         </form>

@@ -9,7 +9,7 @@ import {
 } from "@/assets/icons";
 import { Card } from "@/components/card";
 
-const Services = () => {
+export const Services = () => {
   return (
     <section id="services" className="py-[100px]">
       <h2 className="text-center font-bold text-linkColor text-[32px] mdl:text-[50px] uppercase mb-[60px]">

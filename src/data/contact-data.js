@@ -1,13 +1,13 @@
 export const contactData = {
-  company_name: {
+  company: {
     type: "text",
     name: "Kompaniya nomini kiriting:",
   },
-  fish: {
+  fullName: {
     type: "text",
     name: "F.I.SH (Familiya, Ism, Ochestva)",
   },
-  phone_number: {
+  phone: {
     type: "text",
     name: "Telefon raqamingiz:",
   },
