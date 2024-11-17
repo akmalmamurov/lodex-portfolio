@@ -63,7 +63,7 @@ export const Contact = () => {
           </div>
         </div>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="flex-col md:flex justify-between lgl:gap-0 md:gap-10">
+          <div className="flex-col flex md:flex-row justify-between lgl:gap-0 md:gap-10">
             {/* Left Input Fields */}
             <div className="flex flex-col mdl:w-[446px] gap-4 ">
               {Object.entries(contactData).map(([key, item]) =>
