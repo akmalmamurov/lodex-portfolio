@@ -1,15 +1,18 @@
 import { contactData } from "@/data";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import Loading from "../loading/Loading";
 
 export const Contact = () => {
   const [loading, setLoading] = useState(false);
+  const [data, setData] = useState([]);
+  const [selectedId, setSelectedId] = useState(null);
   const {
     register,
     handleSubmit,
+    setValue,
     reset,
     formState: { errors },
   } = useForm();
@@ -31,7 +34,20 @@ export const Contact = () => {
       setLoading(false);
     }
   };
-
+  const getData = async () => {
+    try {
+      const response = await axios.get(
+        "https://lx.saidnet.uz/api/service/get-all"
+      );
+      setData(response.data.data);
+      console.log(response.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    getData();
+  }, []);
   const phoneChange = (e) => {
     let value = e.target.value.replace(/[^\d]/g, "");
     if (value.startsWith("998")) value = "+" + value;
@@ -44,7 +60,15 @@ export const Contact = () => {
 
     e.target.value = value;
   };
-
+  const handleCheckboxChange = (id) => {
+    if (selectedId === id) {
+      setSelectedId(null);
+      setValue("serviceId", null);
+    } else {
+      setSelectedId(id);
+      setValue("serviceId", id);
+    }
+  };
   return (
     <section id="contact" className="py-[90px]">
       <div className="px-0 lgl:px-[150px]">
@@ -142,29 +166,36 @@ export const Contact = () => {
 
             <div>
               <label className="font-normal text-base text-linkColor mb-2 mdl:hidden block">
-                {contactData.project_type.name}
+                Loyiha Turi:
               </label>
               <div className="flex mdl:flex-col flex-wrap gap-2 mdl:gap-4">
                 <label className="font-normal text-base text-linkColor mb-2 mdl:block hidden">
-                  {contactData.project_type.name}
+                  Loyiha Turi:
                 </label>
-                {contactData.project_type.options.map((option, index) => (
-                  <div className="flex items-center gap-2 mdl:gap-4" key={index}>
-                    <input
-                      type="radio"
-                      id={`project_type_${index}`}
-                      value={option}
-                      // {...register("project_type")}
-                      className="w-[36px] h-[36px] bg-white rounded-full border border-[#5F77C2]/70 cursor-pointer transition duration-200 relative"
-                    />
-                    <label
-                      htmlFor={`project_type_${index}`}
-                      className="text-base lgl:text-lg font-medium cursor-pointer"
-                    >
-                      {option}
-                    </label>
-                  </div>
-                ))}
+                <div >
+                  {data?.map((item) => (
+                    <div className="flex items-center gap-4 mb-2" key={item?.id}>
+                      <input
+                        type="checkbox"
+                        id={`service_${item?.id}`}
+                        checked={selectedId === item?.id}
+                        onChange={() => handleCheckboxChange(item?.id)}
+                        className="w-[36px] h-[36px] bg-white rounded-full border border-[#5F77C2]/70 cursor-pointer transition duration-200 relative"
+                      />
+                      <label
+                        htmlFor={`service_${item?.id}`}
+                        className="text-base lgl:text-lg font-medium cursor-pointer"
+                      >
+                        {item?.title}
+                      </label>
+                    </div>
+                  ))}
+                </div>
+                {errors.serviceId && (
+                  <span className="text-red-500 text-sm">
+                    {errors.serviceId.message}
+                  </span>
+                )}
               </div>
             </div>
           </div>

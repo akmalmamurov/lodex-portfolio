@@ -1,15 +1,24 @@
-import {
-  AiIcon,
-  CrmIcon,
-  ElipseIcon,
-  GameIcon,
-  LogoBrendIcon,
-  MobilIcon,
-  WebsiteIcon,
-} from "@/assets/icons";
+import { ElipseIcon } from "@/assets/icons";
 import { Card } from "@/components/card";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 export const Services = () => {
+  const [data, setData] = useState([]);
+  const getData = async () => {
+    try {
+      const response = await axios.get(
+        "https://lx.saidnet.uz/api/service/get-all"
+      );
+      setData(response.data.data);
+      console.log(response.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    getData();
+  }, []);
   return (
     <section id="services" className="py-[100px]">
       <h2 className="text-center font-bold text-linkColor text-[32px] mdl:text-[50px] uppercase mb-[60px]">
@@ -19,14 +28,14 @@ export const Services = () => {
         {/* column 1 */}
         <div className="relative grid grid-cols-1 mdl:grid-cols-2 gap-8 mdl:gap-[96px]">
           <Card
-            title={"Veb - saytlar"}
-            description={`Korporativ veb saytlardan tortib veb ilovalargacha boʻlgan murakkablikdagi internet saytlarni sifat kafolati bilan ishlab chiqamiz`}
-            icon={<WebsiteIcon className="mdl:w-auto mdl:h-auto w-8 h-8" />}
+            title={data[0]?.title}
+            description={data[0]?.about}
+            image={data[0]?.image}
           />
           <Card
-            title={"Mobil ilovalar"}
-            description={`Istalgan qiyinchilikdagi mobil ilovalarni ishlab chiqish va ularni texnik qoʻllab-quvvatlash`}
-            icon={<MobilIcon />}
+            title={data[1]?.title}
+            description={data[1]?.about}
+            image={data[1]?.image}
           />
           <div className="absolute right-[80px] bottom-8 w-[139px] h-[139px] -z-10">
             <ElipseIcon />
@@ -35,14 +44,14 @@ export const Services = () => {
         {/* column 2 */}
         <div className="relative grid grid-cols-1 mdl:grid-cols-2 gap-8 mdl:gap-[96px]">
           <Card
-            title={"CRM tizimlar"}
-            description={`Biznesni va jarayonlarni avtomatlashtirish, kanselyariya ishlarini 100% gacha kamaytiruvchi boshqaruv elektron tizimlarini  ishlab  chiqish`}
-            icon={<CrmIcon className="mdl:w-auto mdl:h-auto w-8 h-8" />}
+            title={data[2]?.title}
+            description={data[2]?.about}
+            image={data[2]?.image}
           />
           <Card
-            title={"Logo va brending"}
-            description={`Biznesni ilgari surish uchun asosiy vositalar va marketing materiallari to'plamini noldan yaratish.`}
-            icon={<LogoBrendIcon  className="mdl:w-auto mdl:h-auto w-8 h-8"/>}
+            title={data[3]?.title}
+            description={data[3]?.about}
+            image={data[3]?.image}
           />
           <div className="absolute -left-[60px] -top-[98px] w-[139px] h-[139px] -z-10 ">
             <ElipseIcon />
@@ -51,14 +60,14 @@ export const Services = () => {
         {/* column 3 */}
         <div className="relative grid grid-cols-1 mdl:grid-cols-2 gap-8 mdl:gap-[96px]">
           <Card
-            title={"O'yinlar ishlab chiqarish"}
-            description={`Xalqaro darajaga mos keladigan har qanday mavzu va murakkablikdagi o'yinlarni ishlab chiqish.`}
-            icon={<GameIcon  className="mdl:w-auto mdl:h-auto w-8 h-8"/>}
+            title={data[4]?.title}
+            description={data[4]?.about}
+            image={data[4]?.image}
           />
           <Card
-            title={"Sun'iy intellekt"}
-            description={`Inson aql-zakovati imkoniyatlariga ega intellektual kompyuter tizimlarini ishlab chiqish`}
-            icon={<AiIcon  className="mdl:w-auto mdl:h-auto w-8 h-8"/>}
+            title={data[5]?.title}
+            description={data[5]?.about}
+            image={data[5]?.image}
           />
           <div className="absolute right-[80px] bottom-0 w-[139px] h-[139px] -z-10">
             <ElipseIcon />
@@ -67,20 +76,23 @@ export const Services = () => {
         {/* column 4 */}
         <div className="grid grid-cols-1 mdl:grid-cols-2 gap-8 mdl:gap-[96px]">
           <Card
-            title={"Kiber xavfsizlik"}
-            description={`Tarmoqlar, qurilmalar, kodlar va ma'lumotlardagi zaifliklarni topish va tuzatish.`}
+            title={data[6]?.title}
+            description={data[6]?.about}
+            image={data[6]?.image}
           />
           <Card
-            title={"Telegram Bot"}
-            description={`Telegram botlar mijozlaringiz bilan aloqa qilishga yordam beradi. Telegram botlar har qanday biznes boshlash uchun eng yaxshi tanlov.`}
+            title={data[7]?.title}
+            description={data[7]?.about}
+            image={data[7]?.image}
           />
         </div>
         {/* column 5 */}
         <div className="flex justify-start mdl:justify-center ">
           <div className="w-full mdl:w-[582px] relative">
             <Card
-              title={"Internet magazine"}
-              description={`Mahsulotlaringizni onlayn sotmoqchimisiz? Unda sizga Onlayn Internet Magazin xizmatimizni taklif qilamiz.`}
+              title={data[8]?.title}
+              description={data[8]?.about}
+              image={data[8]?.image}
             />
             <div className="absolute -left-[60px] -top-[100px]  mdl:-left-[100px] mdl:-top-[128px] w-[139px] h-[139px] -z-10 ">
               <ElipseIcon />
