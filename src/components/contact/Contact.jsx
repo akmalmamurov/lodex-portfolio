@@ -86,10 +86,10 @@ export const Contact = () => {
             </p>
           </div>
         </div>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form id="contact-add" onSubmit={handleSubmit(onSubmit)}>
           <div className="flex-col flex md:flex-row justify-between lgl:gap-0 md:gap-10">
             {/* Left Input Fields */}
-            <div className="flex flex-col mdl:w-[446px] gap-4 ">
+            <div className="flex flex-col mdl:w-[446px] gap-4 mb-5 md:mb-0 ">
               {Object.entries(contactData).map(([key, item]) =>
                 item.type !== "checkbox" ? (
                   key === "phone" ? (
