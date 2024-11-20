@@ -7,7 +7,7 @@ export const Card = ({ title, image, description, }) => {
         <h3 className="font-semibold text-lg sml:text-2xl mdl:text-[35px] text-black lg:leading-[52px]">
           {title}
         </h3>
-        <img src={image} alt={title} className="mdl:w-auto mdl:h-auto w-7 h-7" />
+        <img src={image} alt={title} />
       </div>
       <p className="font-normal sml:leading-[20px] text-xs sml:text-sm mdl:text-base lg:text-[24px] mdl:leading-7 lg:leading-[36px] lg:text-justify text-textColor">
         {description}
