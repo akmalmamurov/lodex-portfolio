@@ -5,8 +5,10 @@ import {
   YouTubeIcon,
 } from "@/assets/icons";
 import { Container } from "@/container";
+import { useTranslation } from "@/hooks";
 
 export const Footer = () => {
+  const t = useTranslation();
   return (
     <footer className="pt-[46px] pb-[8px]">
       <Container>
@@ -16,7 +18,7 @@ export const Footer = () => {
           </div> */}
           <div className="">
             <h3 className="font-bold text-white text-xl md:text-[32px] mb-3 md:mb-5">
-              Bosh sahifa
+             {t.homePage}
             </h3>
             <ul>
               <li className="text-white text-sm md:text-lg font-normal mb-[7px] cursor-pointer">
@@ -41,7 +43,7 @@ export const Footer = () => {
           </div>
           <div className="">
             <h3 className="font-bold text-white text-lg mb-3 md:text-xl md:mb-5">
-              Ijtimoiy tarmoq
+              {t.socialNetwork}
             </h3>
             <div className="flex flex-col lg:flex-row items-center lg:gap-5">
               <div className="flex items-center  gap-5 lg:mb-0 mb-5">

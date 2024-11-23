@@ -1,10 +1,12 @@
 import { book } from "@/assets/images";
+import { useTranslation } from "@/hooks";
 
 const Portfolio = () => {
+  const t = useTranslation();
   return (
     <section id="portfolio" className="py-[100px]">
       <h2 className="text-center font-bold text-linkColor text-[32px] mdl:text-[50px] uppercase mb-[60px]">
-        PORTFOLIO
+        {t.portfolio}
       </h2>
       <div className="grid grid-cols-1 mdl:grid-cols-2 gap-[55px]">
         <a href="https://book.uz/" target="_blank" className="h-auto mdl:h-[443px] relative  rounded-t-[10px] rounded-br-[10px] px-4 pb-[110px] overflow-hidden bg-black/90 cursor-pointer">

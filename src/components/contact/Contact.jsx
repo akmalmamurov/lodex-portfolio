@@ -1,22 +1,18 @@
-import { contactData } from "@/data";
+import { useContactData } from "@/data";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import Loading from "../loading/Loading";
+import { useTranslation } from "@/hooks";
 
 export const Contact = () => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
   const [selectedId, setSelectedId] = useState(null);
-  const {
-    register,
-    handleSubmit,
-    setValue,
-    reset,
-    formState: { errors },
-  } = useForm();
-
+  const { register, handleSubmit, setValue, reset, formState: { errors }, } = useForm();
+const t = useTranslation();
+const contactData = useContactData();
   const onSubmit = async (data) => {
     const parsedData = {
       ...data,
@@ -73,15 +69,14 @@ export const Contact = () => {
       <div className="px-0 lgl:px-[150px]">
         <div className="mb-[60px]">
           <h2 className="font-bold text-linkColor text-center text-[32px] lgl:text-[50px] uppercase mb-[44px]">
-            Biz bilan bog’laning
+            {t.contactTitle}
           </h2>
           <div>
             <h4 className="font-bold text-[32px] text-center lgl:text-[50px] text-linkColor leading-[75px] lgl:text-left">
-              Contact:
+            {t.kontakt}:
             </h4>
             <p className="font-normal text-linkColor text-center text-base lgl:text-left lgl:text-2xl">
-              Ushbu birlamchi ma’lumotlarni to‘ldirganingizdan so‘ng bizning
-              mas’ul xodimlarimiz siz bilan aloqaga chiqishadi.
+             {t.contactText}
             </p>
           </div>
         </div>
@@ -103,7 +98,7 @@ export const Contact = () => {
                         id={key}
                         placeholder="+998"
                         {...register(key, {
-                          required: "Telefon raqam majburiy maydon",
+                          required: "This field is required",
                           minLength: {
                             value: 17,
                             message: "Noto'g'ri telefon raqam",
@@ -145,7 +140,7 @@ export const Contact = () => {
               )}
               <div className="flex flex-col">
                 <label htmlFor={"description"} className="mb-2 font-medium">
-                  Loyiha tavsifi
+                 {t.projectDescription}
                 </label>
                 <textarea
                   name=""
@@ -165,11 +160,11 @@ export const Contact = () => {
 
             <div>
               <label className="font-normal text-base text-linkColor mb-2 mdl:hidden block">
-                Loyiha Turi:
+                {t.projectType}:
               </label>
               <div className="flex mdl:flex-col flex-wrap gap-2 mdl:gap-4">
                 <label className="font-normal text-base text-linkColor mb-2 mdl:block hidden">
-                  Loyiha Turi:
+                  {t.projectType}:
                 </label>
                 <div >
                   {data?.map((item) => (
@@ -200,7 +195,7 @@ export const Contact = () => {
           </div>
           <div className="flex justify-center mt-[72px]">
             <button className="btn w-1/2 lgl:w-[500px] rounded-[21px] font-semibold py-[3px]  lgl:pt-1 lgl:pb-[5px] lgl:font-bold text-white text-xl lgl:text-[30px] leading-[54px]">
-              {loading ? <Loading /> : "Yuborish"}
+              {loading ? <Loading /> : t.send}
             </button>
           </div>
         </form>

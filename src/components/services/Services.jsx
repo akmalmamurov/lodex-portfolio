@@ -1,9 +1,11 @@
 import { ElipseIcon } from "@/assets/icons";
 import { Card } from "@/components/card";
+import { useTranslation } from "@/hooks";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
 export const Services = () => {
+  const t = useTranslation();
   const [data, setData] = useState([]);
   const getData = async () => {
     try {
@@ -21,7 +23,7 @@ export const Services = () => {
   return (
     <section id="services" className="py-[100px]">
       <h2 className="text-center font-bold text-linkColor text-[32px] mdl:text-[50px] uppercase mb-[60px]">
-        Xizmatlarimiz
+       {t.services}
       </h2>
       <div className="flex flex-col gap-8 mdl:gap-[46px]">
         {/* column 1 */}
