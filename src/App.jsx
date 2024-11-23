@@ -11,7 +11,7 @@ import Portfolio from "./components/portfolio/Portfolio";
 function App() {
   return (
     <>
-      <div className="w-full h-full ">
+      <div className="w-full h-full">
         <Navbar />
         <Container>
           <Home />

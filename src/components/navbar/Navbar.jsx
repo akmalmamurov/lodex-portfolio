@@ -6,14 +6,15 @@ import { useEffect, useRef, useState } from "react";
 import { FiMenu } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
 import { MdClose } from "react-icons/md";
+import NavbarLanguage from "./NavbarLanguage";
 
 export const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
   const menuRef = useRef(null);
 
   const menuVariants = {
-    hidden: { opacity: 0, x: "100%", },
-    visible: { opacity: 1, x: 0, },
+    hidden: { opacity: 0, x: "100%" },
+    visible: { opacity: 1, x: 0 },
     exit: { opacity: 0, x: "100%" },
   };
 
@@ -44,8 +45,9 @@ export const Navbar = () => {
             alt="logo"
             className="w-[80px] object-contain -translate-x-[10.5px]"
           />
+
           {/* Menu */}
-          <div>
+          <div className="flex items-center gap-10">
             <ul className="hidden gap-8 lgl:flex">
               {navLinks.map(({ id, title, link }) => (
                 <li
@@ -65,6 +67,10 @@ export const Navbar = () => {
                 </li>
               ))}
             </ul>
+            {/* language */}
+            <div className="lg:block hidden">
+              <NavbarLanguage />
+            </div>
             <span
               onClick={() => setShowMenu(!showMenu)}
               className="flex items-center justify-center w-10 h-10 text-xl text-linkColor rounded-full lgl:hidden "
@@ -83,8 +89,9 @@ export const Navbar = () => {
                   ref={menuRef}
                 >
                   <div className="relative flex flex-col items-start">
-                    <div>
+                    <div className="flex items-center gap-5">
                       <img src={logo} alt="logo" className="w-[80px]" />
+                      <NavbarLanguage/>
                     </div>
                     <ul className="flex flex-col gap-3 mt-4">
                       {navLinks.map(({ id, title, link }) => (

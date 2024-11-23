@@ -9,3 +9,5 @@ export * from "./InstagramIcon";
 export * from "./FacebookIcon";
 export * from "./YouTubeIcon";
 export * from "./TelegramIcon";
+export * from "./UzIcon";
+export * from "./RuIcon";

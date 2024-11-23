@@ -18,6 +18,7 @@ export default {
         dangerColor: "#F44545",
         titleSpan: "#6778D6",
         textColor: "#808080",
+        dustColor: "#5A5757",
       },
     },
   },
