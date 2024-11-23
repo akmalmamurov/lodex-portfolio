@@ -6,7 +6,7 @@ import aboutTopImg from "./about1.png";
 import aboutMidImg from "./about2.png";
 import aboutBottomImg from "./about3.png";
 import check from "./checked.png";
-
+import book from "./book.svg";
 export {
   logo,
   googlePlay,
@@ -15,4 +15,6 @@ export {
   aboutTopImg,
   aboutMidImg,
   aboutBottomImg,
-  check,};
+  check,
+  book,
+};

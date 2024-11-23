@@ -6,6 +6,7 @@ import {Services} from "@/components/services";
 import { Contact } from "./components/contact";
 import { Toaster } from "react-hot-toast";
 import {Footer} from "@/components/footer";
+import Portfolio from "./components/portfolio/Portfolio";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Home />
           <About />
           <Services />
+          <Portfolio/>
           <Contact />
         </Container>
         <Footer />
