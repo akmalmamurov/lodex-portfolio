@@ -3,7 +3,19 @@
   "aboutus": "About Us",
   "services": "Our services",
   "portfolio": "Portfolio",
-  "team": "Our team",
+  "ourTeam": "Our team",
   "blog": "Blog",
-  "contact": "Contact us"
+  "contact": "Contact us",
+  "hometitle1": "TAKE YOUR BUSINESS TO",
+  "hometitle2": "THE NEXT LEVEL",
+  "hometext": "Your foundation of online solutions.",
+  "strong": "A Strong",
+  "team": "team",
+  "aboutTop": "Group team consists of highly professional and experienced specialists.",
+  "affordable": "Affordable",
+  "price": "price",
+  "aboutMidText": "The price of our services will definitely be the right choice for you and your business.",
+  "fast": "Fast",
+  "qualityWork": "quality work",
+  "aboutBottomText": "We always provide our clients with projects that are perfect in a short period of time"
 }

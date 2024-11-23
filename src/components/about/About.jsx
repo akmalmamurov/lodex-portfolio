@@ -1,4 +1,3 @@
-import { Container } from "@/container";
 import AboutTop from "./AboutTop";
 import AboutMid from "./AboutMid";
 import AboutBottom from "./AboutBottom";

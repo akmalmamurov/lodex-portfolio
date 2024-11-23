@@ -3,7 +3,19 @@
   "aboutus": "Biz Haqimizda",
   "services": "Xizmatlarimiz",
   "portfolio": "Portfolio",
-  "team": "Jamoamiz",
+  "ourTeam": "Jamoamiz",
   "blog": "Blog",
-  "contact": "Biz bilan bog'lanish"
+  "contact": "Biz bilan bog'lanish",
+  "hometitle1": "BIZNESINGIZNI KEYINGI BOSQICHGA",
+  "hometitle2": " OLIB CHIQING.",
+  "hometext": "Sizning online yechimlar poydevoringiz.",
+  "strong": "Kuchli",
+  "team": "jamoa",
+  "aboutTop": "Group jamoasi har tomonlama professional va tajribali bo'lgan mutaxassislardan iborat.",
+  "affordable": "Hamyonbop",
+  "price": "narxlar",
+  "aboutMidText": "Xizmatlarimiz narxi siz va biznesingiz uchun albatta ma'qul va to'g'ri tanlov bo'ladi.",
+  "fast": "Tezkor va",
+  "qualityWork": "sifatli ish",
+  "aboutBottomText": "Biz doimo mijozlarimizga oz muddatda mukammal bo'lgan loyihalarni taqdim etamiz."
 }
