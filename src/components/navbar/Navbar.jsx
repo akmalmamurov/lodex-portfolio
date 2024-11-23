@@ -1,17 +1,17 @@
 import { Link } from "react-scroll";
 import { logo } from "@/assets/images";
-import { navLinks } from "@/data";
 import { Container } from "@/container";
 import { useEffect, useRef, useState } from "react";
 import { FiMenu } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
 import { MdClose } from "react-icons/md";
 import NavbarLanguage from "./NavbarLanguage";
+import { useNavLinks } from "@/data";
 
 export const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
   const menuRef = useRef(null);
-
+  const navLinks = useNavLinks();
   const menuVariants = {
     hidden: { opacity: 0, x: "100%" },
     visible: { opacity: 1, x: 0 },
